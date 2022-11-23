@@ -26,9 +26,10 @@ class CreateWalletsTable extends Migration
         Schema::create('wallets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('userid')->nullable();
+            $table->string('walletID')->nullable();
             $table->float('balance',8,2)->nullable();
             $table->string('source')->nullable();
-            $table->text('notes')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
