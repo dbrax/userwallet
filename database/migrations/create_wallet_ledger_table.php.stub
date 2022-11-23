@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * Author: Emmanuel Paul Mnzava
+ * Twitter: @epmnzava
+ * Github:https://github.com/dbrax/userwallet
+ * Email: epmnzava@gmail.com
+ * 
+ */
+ 
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateWalletLedgerTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('wallet_ledgers', function (Blueprint $table) {
+            $table->id();
+            $table->string('userid')->nullable();
+            $table->string('type')->nullable();
+            $table->float('amount', 8, 2)->nullable();
+            $table->text('note')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('wallet_ledgers');
+    }
+}
