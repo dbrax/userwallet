@@ -26,9 +26,9 @@ class UserwalletServiceProvider extends ServiceProvider
 
             if (!class_exists('CreateWalletLedgerTable') && !class_exists('CreateWalletsTable')) {
                 $this->publishes([
-                    __DIR__ . '/../database/migrations/create_wallet_ledger_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_wallet_ledger_table.php.stub'),
+                    __DIR__ . '/../database/migrations/create_wallet_ledger_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_wallet_ledger_table.php'),
 
-                    __DIR__ . '/../database/migrations/create_wallets_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_wallets_table.php.stub')
+                    __DIR__ . '/../database/migrations/create_wallets_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_wallets_table.php')
 
 
 
