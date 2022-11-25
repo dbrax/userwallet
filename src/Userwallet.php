@@ -46,12 +46,7 @@ class Userwallet
             $wallet->balance = $balance;
             $wallet->userid = $userid;
             $wallet->source = $source;
-            if (Wallet::count() < 1)
-                $wallet->walletID = Wallet::count();
-            else {
-                $count = Wallet::count() + 1;
-                $wallet->walletID = $count + Str::random(2);
-            }
+            $wallet->walletID = Wallet::count() + 1;
             $wallet->note = $note;
             $wallet->save();
 
