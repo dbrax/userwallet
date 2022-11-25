@@ -4,6 +4,7 @@ namespace Epmnzava\Userwallet;
 
 use Epmnzava\Userwallet\Models\Wallet;
 use Epmnzava\Userwallet\Models\WalletLedger;
+use Illuminate\Support\Str;
 
 /**
  * Author: Emmanuel Paul Mnzava
@@ -43,7 +44,14 @@ class Userwallet
 
             $balance = $wallet->balance + $amount;
             $wallet->balance = $balance;
+            $wallet->userid = $userid;
             $wallet->source = $source;
+            if (Wallet::count() < 1)
+                $wallet->walletID = Wallet::count();
+            else {
+                $count = Wallet::count() + 1;
+                $wallet->walletID = $count + Str::random(2);
+            }
             $wallet->note = $note;
             $wallet->save();
 
