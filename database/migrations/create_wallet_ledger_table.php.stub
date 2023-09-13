@@ -29,6 +29,8 @@ class CreateWalletLedgerTable extends Migration
             $table->text('note')->nullable();
             $table->string('source')->nullable();
             $table->string('destination')->nullable();
+            $table->string('receipt')->nullable();
+
             $table->timestamps();
         });
     }

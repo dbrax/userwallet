@@ -19,7 +19,7 @@ class Userwallet
 {
 
 
-    public function deposit($userid, $amount, $source = "", $note = "")
+    public function deposit($userid, $amount, $source = "", $note = "", $receipt = "")
     {
         if ($this->userHasWallet($userid)) {
             $wallet = Wallet::find(Wallet::where('userid', $userid)->first()->id);
@@ -33,7 +33,7 @@ class Userwallet
             $ledger = new WalletLedger;
             $ledger->amount = $amount;
             $ledger->userid = $userid;
-
+            $ledger->receipt = $receipt;
             $ledger->type = "deposit";
             $ledger->note = $note;
             $ledger->save();
@@ -53,7 +53,7 @@ class Userwallet
             $ledger = new WalletLedger;
             $ledger->amount = $amount;
             $ledger->userid = $userid;
-
+            $ledger->receipt = $receipt;
             $ledger->type = "deposit";
             $ledger->note = $note;
             $ledger->save();
@@ -71,7 +71,7 @@ class Userwallet
             return false;
     }
 
-    public function withdraw($userid, $amount, $note = "")
+    public function withdraw($userid, $amount, $note = "", $receipt = "")
     {
         if ($this->userHasWallet($userid)) {
             $wallet = Wallet::find(Wallet::where('userid', $userid)->first()->id);
@@ -87,7 +87,7 @@ class Userwallet
             $ledger = new WalletLedger;
             $ledger->amount = $amount;
             $ledger->userid = $userid;
-
+            $ledger->receipt = $receipt;
             $ledger->type = "withdraw";
             $ledger->note = $note;
             $ledger->save();
