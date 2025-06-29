@@ -76,7 +76,7 @@ class Userwallet
         if ($this->userHasWallet($userid)) {
             $wallet = Wallet::find(Wallet::where('userid', $userid)->first()->id);
 
-            if ($wallet->balance < $amount)
+            if (number_format($wallet->balance) < number_format($amount))
                 return ["status" => 0, "ledger" => [], "wallet" => [], "message" => "Amount to be withdrawned is greater than balance"];
 
             $balance = $wallet->balance - $amount;
