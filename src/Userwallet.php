@@ -76,10 +76,10 @@ class Userwallet
         if ($this->userHasWallet($userid)) {
             $wallet = Wallet::find(Wallet::where('userid', $userid)->first()->id);
 
-            if (number_format($wallet->balance) < number_format($amount,2,'.',""))
+            if (number_format($wallet->balance,2,'.',"") < number_format($amount,2,'.',""))
                 return ["status" => 0, "ledger" => [], "wallet" => [], "message" => "Amount to be withdrawned is greater than balance"];
 
-            $balance = $wallet->balance - $amount;
+            $balance = number_format($wallet->balance,2,'.',"") - number_format($amount,2,'.',"");
             $wallet->balance = $balance;
             $wallet->note = $note;
             $wallet->save();
