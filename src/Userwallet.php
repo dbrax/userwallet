@@ -35,6 +35,7 @@ class Userwallet
             $ledger->userid = $userid;
             $ledger->receipt = $receipt;
             $ledger->destination=$destination;
+            $ledger->source = $source;
 
             $ledger->type = "deposit";
             $ledger->note = $note;
