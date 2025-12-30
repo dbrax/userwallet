@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Epmnzava\Userwallet\Tests\Feature;
 
 
 /**
@@ -16,7 +16,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Epmnzava\Userwallet\Userwallet;
 use Epmnzava\Userwallet\Models\Wallet;
 use Epmnzava\Userwallet\Models\WalletLedger;
-use Orchestra\Testbench\TestCase;
+use Epmnzava\Userwallet\Tests\TestCase;
 
 class UserwalletTest extends TestCase
 {
