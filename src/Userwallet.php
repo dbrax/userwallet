@@ -24,7 +24,7 @@ class Userwallet
         if ($this->userHasWallet($userid)) {
             $wallet = Wallet::find(Wallet::where('userid', $userid)->first()->id);
 
-            $balance = bcadd((string) $wallet->balance, (string) $amount, 2);
+            $balance = \bcadd((string) $wallet->balance, (string) $amount, 2);
             $wallet->balance = $balance;
             $wallet->source = $source;
             $wallet->note = $note;
@@ -45,7 +45,7 @@ class Userwallet
         } else {
             $wallet = new Wallet;
 
-            $balance = bcadd("0", (string) $amount, 2);
+            $balance = \bcadd("0", (string) $amount, 2);
             $wallet->balance = $balance;
             $wallet->userid = $userid;
             $wallet->source = $source;
@@ -81,10 +81,10 @@ class Userwallet
         if ($this->userHasWallet($userid)) {
             $wallet = Wallet::find(Wallet::where('userid', $userid)->first()->id);
 
-         if (bccomp((string)$wallet->balance, (string)$amount, 2) === -1) 
+         if (\bccomp((string)$wallet->balance, (string)$amount, 2) === -1) 
                 return ["status" => 0, "ledger" => [], "wallet" => [], "message" => "Amount to be withdrawned is greater than balance"];
 
-            $balance =  bcsub($wallet->balance, $amount, 2);
+            $balance =  \bcsub($wallet->balance, $amount, 2);
             
             $wallet->balance = $balance;
             $wallet->note = $note;
